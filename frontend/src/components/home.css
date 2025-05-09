@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Special+Gothic+Expanded+One&display=swap');
+.homeDiv
+{
+    margin-top: -39px;  
+    padding-bottom: 5px;
+}
+.typewriter-heading {
+    color: #ffffff;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 50px;
+  }
+  
+  .line-1 {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 6s steps(40, end) forwards, blink 0.6s step-end infinite;
+    text-shadow: 0 0 2px rgba(222, 21, 85, 0.707), 0 0 5px rgba(225, 16, 16, 0.731), 0 0 10px rgba(255, 255, 255, 0.5);
+
+  }
+  
+  .line-2 {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+    animation-delay: 3.5s;
+    display: inline-block;
+    color:rgb(255, 164, 37);
+    text-shadow: 0 0 2px rgba(222, 21, 85, 0.707), 0 0 5px rgba(225, 16, 16, 0.731), 0 0 10px rgba(255, 255, 255, 0.5);
+
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  @keyframes blink {
+    50% { border-color: transparent; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+.jobsDiv {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+#jobHead
+{
+  margin-top: -50px;
+} 
+

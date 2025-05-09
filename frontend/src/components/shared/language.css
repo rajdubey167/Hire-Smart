@@ -1,0 +1,54 @@
+/* Custom Language Dropdown Styling */
+.relative {
+    position: relative;
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #444;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button svg {
+    transition: transform 0.3s ease;
+  }
+  
+  button:hover svg {
+    transform: rotate(180deg); /* Rotate the arrow on hover */
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+  }
+  
+  li {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  li:hover {
+    background-color: #444;
+  }
+  
+  li:active {
+    background-color: #555;
+  }
+  
