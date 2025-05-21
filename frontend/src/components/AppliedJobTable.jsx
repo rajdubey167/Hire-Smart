@@ -83,7 +83,7 @@ const AppliedJobTable = () => {
                         allAppliedJobs.length <= 0 ? (
                             <TableRow>
                                 <TableCell colSpan={7} className="text-center">
-                                    You haven't applied to any job yet.
+                                    You haven&apos;t applied to any job yet.
                                 </TableCell>
                             </TableRow>
                         ) : allAppliedJobs.map((appliedJob) => (
@@ -118,8 +118,8 @@ const AppliedJobTable = () => {
                                         <div className="flex items-center gap-1">
                                             {renderStars(appliedJob.rating.score)}
                                             {appliedJob.rating.review && (
-                                                <span className="ml-2 text-gray-400 text-sm pl-4">
-                                                    "{appliedJob.rating.review}"
+                                                <span className="pl-4 ml-2 text-sm text-gray-400">
+                                                    &quot;{appliedJob.rating.review}&quot;
                                                 </span>
                                             )}
                                         </div>
@@ -129,14 +129,14 @@ const AppliedJobTable = () => {
                                 </TableCell>
                                 <TableCell>
                                     {appliedJob.feedback ? (
-                                        <span className="text-gray-400 text-sm">"{appliedJob.feedback}"</span>
+                                        <span className="text-sm text-gray-400">&quot;{appliedJob.feedback}&quot;</span>
                                     ) : (
                                         <button
                                             onClick={() => {
                                                 setShowModal(true)
                                                 setActiveJobId(appliedJob._id)
                                             }}
-                                            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full shadow-md hover:scale-105 transition duration-200"
+                                            className="px-4 py-1 text-white transition duration-200 rounded-full shadow-md bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105"
                                         >
                                             Give Feedback
                                         </button>
@@ -149,9 +149,9 @@ const AppliedJobTable = () => {
             </Table>
 
             {showModal && (
-                <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center animate-fade-in">
-                    <div className="bg-zinc-900 text-white p-6 rounded-xl w-96 shadow-xl border border-zinc-700 relative">
-                        <h2 className="text-xl font-bold mb-4">Give Feedback</h2>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 animate-fade-in">
+                    <div className="relative p-6 text-white border shadow-xl bg-zinc-900 rounded-xl w-96 border-zinc-700">
+                        <h2 className="mb-4 text-xl font-bold">Give Feedback</h2>
                         <textarea
                             rows={4}
                             placeholder="Write your feedback here..."
@@ -162,7 +162,7 @@ const AppliedJobTable = () => {
                                     [activeJobId]: e.target.value,
                                 })
                             }
-                            className="w-full bg-zinc-800 p-3 rounded-lg text-sm border border-zinc-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                            className="w-full p-3 text-sm border rounded-lg bg-zinc-800 border-zinc-600 focus:outline-none focus:ring-2 focus:ring-pink-500"
                         />
                         <div className="flex justify-end gap-2 mt-4">
                             <button
@@ -170,14 +170,14 @@ const AppliedJobTable = () => {
                                     setShowModal(false)
                                     setActiveJobId(null)
                                 }}
-                                className="px-4 py-1 bg-zinc-700 hover:bg-zinc-600 rounded-md text-sm"
+                                className="px-4 py-1 text-sm rounded-md bg-zinc-700 hover:bg-zinc-600"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={() => handleFeedbackSubmit(activeJobId)}
                                 disabled={loadingFeedbackId === activeJobId}
-                                className="px-4 py-1 bg-pink-600 hover:bg-pink-700 rounded-md text-sm"
+                                className="px-4 py-1 text-sm bg-pink-600 rounded-md hover:bg-pink-700"
                             >
                                 {loadingFeedbackId === activeJobId ? 'Submitting...' : 'Submit'}
                             </button>

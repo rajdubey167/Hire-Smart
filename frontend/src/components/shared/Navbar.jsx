@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { Button } from '../ui/button';
 import { Avatar, AvatarImage } from '../ui/avatar';
 import { LogOut, User2, Bell, Menu, X, Home, Briefcase, FolderTree, Building2, Users, UserCircle } from 'lucide-react';
@@ -15,38 +15,38 @@ import UserProfileDialog from './UserProfileDialog';
 
 // Color theme constants
 const theme = {
-  primary: {
-    main: '#3B82F6', // Blue
-    light: '#60A5FA',
-    dark: '#2563EB',
-    contrast: '#FFFFFF'
-  },
-  secondary: {
-    main: '#10B981', // Green
-    light: '#34D399',
-    dark: '#059669',
-    contrast: '#FFFFFF'
-  },
-  accent: {
-    main: '#8B5CF6', // Purple
-    light: '#A78BFA',
-    dark: '#7C3AED',
-    contrast: '#FFFFFF'
-  },
-  background: {
-    default: '#FFFFFF',
-    paper: '#F9FAFB',
-    dark: '#F3F4F6'
-  },
-  text: {
-    primary: '#1F2937',
-    secondary: '#4B5563',
-    light: '#9CA3AF'
-  },
-  border: {
-    light: '#E5E7EB',
-    medium: '#D1D5DB'
-  }
+    primary: {
+        main: '#3B82F6', // Blue
+        light: '#60A5FA',
+        dark: '#2563EB',
+        contrast: '#FFFFFF'
+    },
+    secondary: {
+        main: '#10B981', // Green
+        light: '#34D399',
+        dark: '#059669',
+        contrast: '#FFFFFF'
+    },
+    accent: {
+        main: '#8B5CF6', // Purple
+        light: '#A78BFA',
+        dark: '#7C3AED',
+        contrast: '#FFFFFF'
+    },
+    background: {
+        default: '#FFFFFF',
+        paper: '#F9FAFB',
+        dark: '#F3F4F6'
+    },
+    text: {
+        primary: '#1F2937',
+        secondary: '#4B5563',
+        light: '#9CA3AF'
+    },
+    border: {
+        light: '#E5E7EB',
+        medium: '#D1D5DB'
+    }
 };
 
 // Import categories data from CategoryCarousel
@@ -167,7 +167,7 @@ const Navbar = () => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+            className="sticky top-0 z-50 w-full border-b border-gray-200 shadow-sm bg-white/80 backdrop-blur-md"
         >
             <div className="flex items-center justify-between h-16 px-6 mx-auto max-w-7xl">
                 <div className="flex items-center gap-4">
@@ -176,7 +176,9 @@ const Navbar = () => {
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                        Hire<span className="text-[#3B82F6] ml-2">Smart</span>
+                        <Link to="/" className="flex items-center">
+                            Hire<span className="text-[#3B82F6] ml-2">Smart</span>
+                        </Link>
                     </motion.h1>
                 </div>
 
@@ -185,7 +187,7 @@ const Navbar = () => {
                     <Button 
                         variant="ghost" 
                         onClick={() => setShowMenu(!showMenu)} 
-                        className="text-gray-700 hover:bg-gray-100 rounded-full p-2"
+                        className="p-2 text-gray-700 rounded-full hover:bg-gray-100"
                     >
                         {showMenu ? <X size={24} /> : <Menu size={24} />}
                     </Button>
@@ -210,11 +212,11 @@ const Navbar = () => {
                             animate={{ x: 0 }}
                             exit={{ x: "-100%" }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="fixed top-0 left-0 w-72 h-screen bg-white z-50 shadow-2xl lg:hidden overflow-y-auto"
+                            className="fixed top-0 left-0 z-50 h-screen overflow-y-auto bg-white shadow-2xl w-72 lg:hidden"
                         >
-                            <div className="flex items-center justify-between p-5 border-b border-gray-200 bg-white sticky top-0 z-10">
+                            <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-white border-b border-gray-200">
                                 <h1 className="text-2xl font-bold text-gray-900">Menu</h1>
-                                <Button variant="ghost" onClick={() => setShowMenu(false)} className="text-gray-700 hover:bg-gray-100 rounded-full p-2">
+                                <Button variant="ghost" onClick={() => setShowMenu(false)} className="p-2 text-gray-700 rounded-full hover:bg-gray-100">
                                     <X size={24} />
                                 </Button>
                             </div>
@@ -223,19 +225,19 @@ const Navbar = () => {
                                     {user && user.role === 'recruiter' ? (
                                         <>
                                             <li>
-                                                <Link to="/admin/companies" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/admin/companies" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <Building2 size={20} className="text-blue-500" />
                                                     <span>Companies</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/admin/jobs" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/admin/jobs" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <Briefcase size={20} className="text-blue-500" />
                                                     <span>Jobs</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/admin/jobs/accepted" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/admin/jobs/accepted" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <Users size={20} className="text-blue-500" />
                                                     <span>Applicants</span>
                                                 </Link>
@@ -244,13 +246,13 @@ const Navbar = () => {
                                     ) : (
                                         <>
                                             <li>
-                                                <Link to="/" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <Home size={20} className="text-blue-500" />
                                                     <span>Home</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/jobs" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/jobs" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <Briefcase size={20} className="text-blue-500" />
                                                     <span>Work</span>
                                                 </Link>
@@ -258,7 +260,7 @@ const Navbar = () => {
                                             <li>
                                                 <button 
                                                     onClick={toggleCategorySection} 
-                                                    className="flex items-center gap-3 p-3 w-full text-left text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                                                    className="flex items-center w-full gap-3 p-3 font-medium text-left text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600"
                                                 >
                                                     <FolderTree size={20} className="text-blue-500" />
                                                     <span>Categories</span>
@@ -271,13 +273,13 @@ const Navbar = () => {
                                     {!user && (
                                         <>
                                             <li>
-                                                <Link to="/login" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/login" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <User2 size={20} className="text-blue-500" />
                                                     <span>Login</span>
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link to="/signup" className="flex items-center gap-3 p-3 text-gray-800 font-medium rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors">
+                                                <Link to="/signup" className="flex items-center gap-3 p-3 font-medium text-gray-800 transition-colors rounded-lg hover:bg-blue-50 hover:text-blue-600">
                                                     <UserCircle size={20} className="text-blue-500" />
                                                     <span>Signup</span>
                                                 </Link>
@@ -288,7 +290,7 @@ const Navbar = () => {
                                 
                                 {/* User Profile Section in Mobile Menu */}
                                 {user && (
-                                    <div className="mt-8 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                                    <div className="p-4 mt-8 bg-white border border-gray-200 shadow-sm rounded-xl">
                                         <div className="flex items-center gap-3">
                                             <Avatar className="border-2 border-blue-200">
                                                 <AvatarImage src={user?.profile?.profilePhoto} alt="@profile" />
@@ -298,11 +300,11 @@ const Navbar = () => {
                                                 <p className="text-xs text-gray-500">{user?.email}</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-                                            <Link to="/profile" className="text-sm text-blue-600 hover:text-blue-800 transition-colors">Profile</Link>
+                                        <div className="flex items-center justify-between pt-4 mt-4 border-t border-gray-100">
+                                            <Link to="/profile" className="text-sm text-blue-600 transition-colors hover:text-blue-800">Profile</Link>
                                             <Button 
                                                 variant="ghost" 
-                                                className="text-sm text-red-600 hover:text-red-800 hover:bg-red-50 transition-colors" 
+                                                className="text-sm text-red-600 transition-colors hover:text-red-800 hover:bg-red-50" 
                                                 onClick={logoutHandler}
                                             >
                                                 Logout <LogOut size={16} className="ml-1" />
@@ -398,7 +400,7 @@ const Navbar = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 10 }}
                                 transition={{ duration: 0.3 }}
-                                className="absolute top-16 left-0 right-0 z-40 p-6 bg-white border-b border-gray-200 shadow-lg"
+                                className="absolute left-0 right-0 z-40 p-6 bg-white border-b border-gray-200 shadow-lg top-16"
                             >
                                 <div className="mx-auto max-w-7xl">
                                     <div className="flex items-center justify-between mb-6">
@@ -414,8 +416,8 @@ const Navbar = () => {
                                     
                                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                                         {categories.map((section, idx) => (
-                                            <div key={idx} className="p-4 bg-gray-50 rounded-lg">
-                                                <h3 className="mb-4 text-lg font-semibold text-gray-800 border-l-4 border-blue-500 pl-2">
+                                            <div key={idx} className="p-4 rounded-lg bg-gray-50">
+                                                <h3 className="pl-2 mb-4 text-lg font-semibold text-gray-800 border-l-4 border-blue-500">
                                                     {section.groupName}
                                                 </h3>
                                                 <div className="grid grid-cols-1 gap-3">
@@ -462,7 +464,7 @@ const Navbar = () => {
                                 <motion.span 
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
-                                    className="absolute flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 rounded-full -top-2 -right-2 shadow-md"
+                                    className="absolute flex items-center justify-center w-5 h-5 text-xs font-medium text-white bg-red-600 rounded-full shadow-md -top-2 -right-2"
                                 >
                                     {notifications.length}
                                 </motion.span>
@@ -473,7 +475,7 @@ const Navbar = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 10 }}
                                     transition={{ duration: 0.2 }}
-                                    className="absolute right-0 z-50 mt-2 overflow-hidden bg-white border border-gray-200 rounded-xl shadow-xl w-80 max-h-96"
+                                    className="absolute right-0 z-50 mt-2 overflow-hidden bg-white border border-gray-200 shadow-xl rounded-xl w-80 max-h-96"
                                 >
                                     <div className="p-3 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-indigo-50">
                                         <h3 className="text-sm font-semibold text-gray-800">Notifications</h3>
@@ -481,7 +483,7 @@ const Navbar = () => {
                                     
                                     {notifications.length === 0 ? (
                                         <div className="flex flex-col items-center justify-center p-6 text-center">
-                                            <Bell className="w-10 h-10 text-gray-300 mb-2" />
+                                            <Bell className="w-10 h-10 mb-2 text-gray-300" />
                                             <p className="text-sm text-gray-500">No new notifications</p>
                                         </div>
                                     ) : (
@@ -495,13 +497,13 @@ const Navbar = () => {
                                                     className="flex items-start p-4 transition-all duration-300 border-b hover:bg-gray-50 group"
                                                 >
                                                     <div className="flex-shrink-0 mr-3">
-                                                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600">
+                                                        <div className="flex items-center justify-center w-8 h-8 text-blue-600 bg-blue-100 rounded-full">
                                                             <Bell size={16} />
                                                         </div>
                                                     </div>
                                                     <div className="flex-1 min-w-0">
                                                         <p className="text-sm text-gray-700 group-hover:text-gray-900">{notif.message}</p>
-                                                        <p className="text-xs text-gray-400 mt-1">
+                                                        <p className="mt-1 text-xs text-gray-400">
                                                             {new Date(notif.createdAt).toLocaleString()}
                                                         </p>
                                                     </div>
@@ -551,7 +553,7 @@ const Navbar = () => {
                     ) : (
                         <div className="flex items-center gap-4">
                             <Avatar 
-                                className="cursor-pointer hover:ring-2 hover:ring-blue-500 transition-all"
+                                className="transition-all cursor-pointer hover:ring-2 hover:ring-blue-500"
                                 onClick={() => setIsProfileOpen(true)}
                             >
                                 <AvatarImage src={user?.profile?.profilePhoto || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"} alt="profile" />

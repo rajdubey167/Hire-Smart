@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { Search, ArrowRight, MapPin, Briefcase, Sparkles, Building2, Users, Clock } from 'lucide-react';
 import { useDispatch } from 'react-redux';
@@ -12,34 +13,34 @@ import 'swiper/css/effect-fade';
 
 // Stats Card Component
 const StatCard = ({ icon: Icon, value, label }) => (
-  <motion.div 
-    className="flex flex-col items-center justify-center p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20"
-    whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-    transition={{ type: "spring", stiffness: 300 }}
-  >
-    <div className="p-2 mb-2 text-pink-400 bg-white/10 rounded-full">
-      <Icon size={20} />
-    </div>
-    <span className="text-2xl font-bold text-white">{value}</span>
-    <span className="text-sm text-gray-300">{label}</span>
-  </motion.div>
+    <motion.div 
+        className="flex flex-col items-center justify-center p-4 border bg-white/10 backdrop-blur-md rounded-xl border-white/20"
+        whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+        transition={{ type: "spring", stiffness: 300 }}
+    >
+        <div className="p-2 mb-2 text-pink-400 rounded-full bg-white/10">
+        <Icon size={20} />
+        </div>
+        <span className="text-2xl font-bold text-white">{value}</span>
+        <span className="text-sm text-gray-300">{label}</span>
+    </motion.div>
 );
 
 // Feature Card Component
 const FeatureCard = ({ icon: Icon, title, description }) => (
-  <motion.div 
-    className="flex items-start p-4 bg-white/10 backdrop-blur-md rounded-xl border border-white/20"
-    whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-    transition={{ type: "spring", stiffness: 300 }}
-  >
-    <div className="p-2 mr-4 text-pink-400 bg-white/10 rounded-full">
-      <Icon size={20} />
-    </div>
-    <div>
-      <h3 className="mb-1 text-lg font-semibold text-white">{title}</h3>
-      <p className="text-sm text-gray-300">{description}</p>
-    </div>
-  </motion.div>
+    <motion.div 
+        className="flex items-start p-4 border bg-white/10 backdrop-blur-md rounded-xl border-white/20"
+        whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+        transition={{ type: "spring", stiffness: 300 }}
+    >
+        <div className="p-2 mr-4 text-pink-400 rounded-full bg-white/10">
+        <Icon size={20} />
+        </div>
+        <div>
+        <h3 className="mb-1 text-lg font-semibold text-white">{title}</h3>
+        <p className="text-sm text-gray-300">{description}</p>
+        </div>
+    </motion.div>
 );
 
 const HeroSection = () => {
@@ -65,12 +66,12 @@ const HeroSection = () => {
 
     return (
         <Swiper
-            loop={true}
+            loop={false}
             slidesPerView={1}
             modules={[Autoplay, EffectFade]}
             effect="fade"
             autoplay={{
-                delay: 1000,
+                delay: 5000,
                 disableOnInteraction: false,
             }}
             className="relative w-full h-screen overflow-x-hidden"
@@ -206,11 +207,11 @@ const HeroSection = () => {
                             transition={{ delay: 0.8, duration: 0.5 }}
                             className="flex flex-wrap items-center justify-center gap-4 mt-4"
                         >
-                            <div className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                            <div className="flex items-center gap-2 px-4 py-2 text-sm text-white border rounded-full bg-white/10 backdrop-blur-md border-white/20">
                                 <MapPin size={16} className="text-pink-400" />
                                 <span>Local Jobs</span>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                            <div className="flex items-center gap-2 px-4 py-2 text-sm text-white border rounded-full bg-white/10 backdrop-blur-md border-white/20">
                                 <Briefcase size={16} className="text-purple-400" />
                                 <span>Popular Categories</span>
                             </div>

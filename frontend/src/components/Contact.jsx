@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
@@ -82,7 +83,7 @@ const ContactForm = ({ formData, handleChange, handleSubmit, status, isSubmittin
         <span>Contact Us</span>
       </div>
       <h2 className="section-title">Get In Touch</h2>
-      <p className="contact-subtitle">Have questions? Want to sign up? Send us a message and we'll respond shortly.</p>
+      <p className="contact-subtitle">Have questions? Want to sign up? Send us a message and we&apos;ll respond shortly.</p>
       
       <motion.form 
         className="contact-form" 

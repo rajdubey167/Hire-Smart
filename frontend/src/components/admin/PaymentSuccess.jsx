@@ -26,13 +26,13 @@ const PaymentSuccess = () => {
   }, [applicationId]);
 
   return (
-   <>
-   <Navbar />
-    <div className="text-center mt-20 text-green-500" style={{paddingBottom:"75.8vh"}}>
-      <h2 className="text-3xl font-bold">✅ Payment Successful!</h2>
-      <p className="mt-4 text-lg">Thanks for your payment. Status has been updated.</p>
-    </div>
-   </>
+    <>
+    <Navbar />
+      <div className="mt-20 text-center text-green-500" style={{paddingBottom:"75.8vh"}}>
+        <h2 className="text-3xl font-bold">✅ Payment Successful!</h2>
+        <p className="mt-4 text-lg">Thanks for your payment. Status has been updated.</p>
+      </div>
+    </>
   );
 };
 

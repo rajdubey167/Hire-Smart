@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from '../ui/button' 
 import { useNavigate } from 'react-router-dom' 
 import AdminJobsTable from './AdminJobsTable'
@@ -17,7 +16,7 @@ const AdminJobs = () => {
         <div className='flex items-center justify-end my-5'>
           <Button 
             onClick={() => navigate("/admin/jobs/create")}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
+            className="text-white bg-blue-600 hover:bg-blue-700"
           > 
             Post New Job 
           </Button>

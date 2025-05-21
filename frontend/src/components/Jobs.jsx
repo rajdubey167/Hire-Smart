@@ -86,7 +86,7 @@ const Jobs = () => {
                                                 className="h-full flex"
                                             >
                                                 <div className="w-full">
-                                                    <Job job={job} />
+                                                    <Job job={job} index={index} />
                                                 </div>
                                             </motion.div>
                                         ))}

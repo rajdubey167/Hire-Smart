@@ -39,12 +39,12 @@ const AppliedJobTable = () => {
         );
     };
 
-   const handleFeedbackSubmit = async (appliedJobId) => {
-    const feedbackText = feedbackInput[appliedJobId]?.trim();
-    if (!feedbackText) {
-        toast.error("Feedback cannot be empty!");
-        return;
-    }
+    const handleFeedbackSubmit = async (appliedJobId) => {
+        const feedbackText = feedbackInput[appliedJobId]?.trim();
+        if (!feedbackText) {
+            toast.error("Feedback cannot be empty!");
+            return;
+        }
 
     try {
         setLoadingFeedbackId(appliedJobId);
@@ -89,7 +89,7 @@ const AppliedJobTable = () => {
                     {allAppliedJobs.length <= 0 ? (
                         <TableRow>
                             <TableCell colSpan={7}>
-                                <span className="text-gray-500">You haven't applied to any jobs yet.</span>
+                                <span className="text-gray-500">You haven&apos;t applied to any jobs yet.</span>
                             </TableCell>
                         </TableRow>
                     ) : (
@@ -131,7 +131,7 @@ const AppliedJobTable = () => {
                                             {renderStars(appliedJob.rating.score)}
                                             {appliedJob.rating.review && (
                                                 <span className="ml-2 text-sm text-gray-400" style={{ paddingLeft: "20px" }}>
-                                                    "{appliedJob.rating.review}"
+                                                    &quot;{appliedJob.rating.review}&quot;
                                                 </span>
                                             )}
                                         </div>
@@ -142,7 +142,7 @@ const AppliedJobTable = () => {
 
                                 <TableCell>
                                     {appliedJob.feedback ? (
-                                        <span className="text-sm text-gray-400">"{appliedJob.feedback}"</span>
+                                        <span className="text-sm text-gray-400">&quot;{appliedJob.feedback}&quot;</span>
                                     ) : (
                                         <div className="flex flex-col gap-2">
                                             <input

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
 import { Button } from '../ui/button'
 import { ArrowLeft, Loader2, Building2, Globe, MapPin, FileImage, Save } from 'lucide-react'
@@ -9,7 +10,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { useSelector } from 'react-redux'
 import useGetCompanyById from '@/hooks/useGetCompanyById'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import './CompanySetup.css'
 import Navbar from '../shared/Navbar'
 
@@ -58,7 +59,7 @@ const PageHeader = ({ title, onBack }) => (
       <ArrowLeft className='mr-2' />
       Back
     </Button>
-    <h1 className='text-3xl md:text-4xl font-extrabold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500'>
+    <h1 className='text-3xl font-extrabold tracking-wider text-transparent md:text-4xl bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500'>
       {title}
     </h1>
   </motion.div>
@@ -69,7 +70,7 @@ const FormField = ({ label, name, value, onChange, type = "text", placeholder, i
     variants={itemVariants}
     className={`flex flex-col ${className}`}
   >
-    <Label className="mb-2 text-sm font-medium text-gray-700 flex items-center gap-2">
+    <Label className="flex items-center gap-2 mb-2 text-sm font-medium text-gray-700">
       {icon && icon}
       {label}
     </Label>
@@ -79,7 +80,7 @@ const FormField = ({ label, name, value, onChange, type = "text", placeholder, i
       value={value}
       onChange={onChange}
       accept={accept}
-      className="px-4 py-2 text-gray-800 transition-all duration-300 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder:text-gray-400 shadow-sm"
+      className="px-4 py-2 text-gray-800 transition-all duration-300 bg-white border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder:text-gray-400"
       placeholder={placeholder}
     />
   </motion.div>
@@ -105,22 +106,22 @@ const FileUploadField = ({ label, onChange, accept = "image/*" }) => {
       variants={itemVariants}
       className="col-span-full"
     >
-      <Label className="mb-2 text-sm font-medium text-gray-700 flex items-center gap-2">
+      <Label className="flex items-center gap-2 mb-2 text-sm font-medium text-gray-700">
         <FileImage size={16} />
         {label}
       </Label>
-      <div className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+      <div className="flex flex-col items-center justify-center p-6 transition-colors border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 hover:bg-gray-100">
         {preview ? (
           <div className="relative w-32 h-32 mb-4">
             <img 
               src={preview} 
               alt="Logo preview" 
-              className="w-full h-full object-contain rounded-full border border-gray-200 shadow-sm"
+              className="object-contain w-full h-full border border-gray-200 rounded-full shadow-sm"
             />
             <button
               type="button"
               onClick={() => setPreview(null)}
-              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow-md hover:bg-red-600 transition-colors"
+              className="absolute p-1 text-white transition-colors bg-red-500 rounded-full shadow-md -top-2 -right-2 hover:bg-red-600"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -130,14 +131,14 @@ const FileUploadField = ({ label, onChange, accept = "image/*" }) => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center text-center">
-            <div className="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-blue-50 text-blue-500">
+            <div className="flex items-center justify-center w-16 h-16 mb-4 text-blue-500 rounded-full bg-blue-50">
               <FileImage size={32} />
             </div>
             <p className="mb-2 text-sm font-medium text-gray-700">Upload company logo</p>
-            <p className="text-xs text-gray-500 mb-4">SVG, PNG, JPG or GIF (max. 2MB)</p>
+            <p className="mb-4 text-xs text-gray-500">SVG, PNG, JPG or GIF (max. 2MB)</p>
           </div>
         )}
-        <label className="cursor-pointer bg-white text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-md border border-blue-200 text-sm font-medium transition-colors">
+        <label className="px-4 py-2 text-sm font-medium text-blue-600 transition-colors bg-white border border-blue-200 rounded-md cursor-pointer hover:bg-blue-50">
           {preview ? "Change logo" : "Select logo"}
           <input
             type="file"
@@ -158,7 +159,7 @@ const SubmitButton = ({ loading, text }) => (
   >
     {loading ? (
       <Button 
-        className="flex items-center justify-center w-full gap-3 py-5 text-xl font-bold text-blue-500 bg-blue-50 border border-blue-200 rounded-xl"
+        className="flex items-center justify-center w-full gap-3 py-5 text-xl font-bold text-blue-500 border border-blue-200 bg-blue-50 rounded-xl"
         disabled
       >
         <Loader2 className='animate-spin' /> Loading...
@@ -166,7 +167,7 @@ const SubmitButton = ({ loading, text }) => (
     ) : (
       <Button 
         type="submit" 
-        className="w-full py-5 text-xl font-bold text-white transition-all shadow-lg bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 rounded-xl hover:brightness-110 flex items-center justify-center gap-2"
+        className="flex items-center justify-center w-full gap-2 py-5 text-xl font-bold text-white transition-all shadow-lg bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 rounded-xl hover:brightness-110"
       >
         <Save size={20} />
         {text}
@@ -253,7 +254,7 @@ const CompanySetup = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="max-w-4xl mx-auto mt-16 p-8 md:p-10 bg-white border border-gray-200 rounded-2xl shadow-lg"
+                className="max-w-4xl p-8 mx-auto mt-16 bg-white border border-gray-200 shadow-lg md:p-10 rounded-2xl"
             >
                 <form onSubmit={submitHandler}>
                     <PageHeader 

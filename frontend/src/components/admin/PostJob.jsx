@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -8,8 +9,8 @@ import axios from 'axios'
 import { JOB_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
-import { Loader2, Briefcase, MapPin, Clock, Award, Users, Building2, ArrowLeft, Rocket } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { Loader2, Briefcase, MapPin, Clock, Award, Users, Building2, Rocket } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Navbar from '../shared/Navbar'
 
 // Animation variants
@@ -44,10 +45,10 @@ const PageHeader = ({ title, subtitle }) => (
     transition={{ duration: 0.6 }}
     className="mb-8 text-center"
   >
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-wide">
+    <h2 className="text-3xl font-bold tracking-wide text-gray-800 md:text-4xl">
       {title}
     </h2>
-    {subtitle && <p className="text-gray-600 mt-2 text-sm">{subtitle}</p>}
+    {subtitle && <p className="mt-2 text-sm text-gray-600">{subtitle}</p>}
   </motion.div>
 );
 
@@ -56,7 +57,7 @@ const FormField = ({ label, name, value, onChange, type = "text", placeholder, i
     variants={itemVariants}
     className="mb-4"
   >
-    <Label className="text-gray-700 flex items-center gap-2">
+    <Label className="flex items-center gap-2 text-gray-700">
       {icon && icon}
       {label}
     </Label>
@@ -66,7 +67,7 @@ const FormField = ({ label, name, value, onChange, type = "text", placeholder, i
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className="bg-white border border-gray-300 text-gray-800 my-1 focus:ring-2 focus:ring-blue-500 hover:border-blue-400 transition-all"
+      className="my-1 text-gray-800 transition-all bg-white border border-gray-300 focus:ring-2 focus:ring-blue-500 hover:border-blue-400"
     />
   </motion.div>
 );
@@ -74,17 +75,17 @@ const FormField = ({ label, name, value, onChange, type = "text", placeholder, i
 const CompanySelect = ({ companies, onSelect }) => (
   <motion.div 
     variants={itemVariants}
-    className="col-span-1 md:col-span-2 mb-4"
+    className="col-span-1 mb-4 md:col-span-2"
   >
-    <Label className="text-gray-700 flex items-center gap-2">
+    <Label className="flex items-center gap-2 text-gray-700">
       <Building2 size={16} />
       Select Company
     </Label>
     <Select onValueChange={onSelect}>
-      <SelectTrigger className="w-full bg-white border border-gray-300 text-gray-800 hover:border-blue-400">
+      <SelectTrigger className="w-full text-gray-800 bg-white border border-gray-300 hover:border-blue-400">
         <SelectValue placeholder="Select a Company" />
       </SelectTrigger>
-      <SelectContent className="bg-white text-gray-800 border border-blue-200">
+      <SelectContent className="text-gray-800 bg-white border border-blue-200">
         <SelectGroup>
           {companies.map((company) => (
             <SelectItem key={company._id} value={company?.name?.toLowerCase()}>
@@ -103,11 +104,11 @@ const SubmitButton = ({ loading }) => (
     className="mt-6"
   >
     {loading ? (
-      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md">
-        <Loader2 className='mr-2 h-4 w-4 animate-spin' /> Please wait
+      <Button className="w-full text-white bg-blue-600 shadow-md hover:bg-blue-700">
+        <Loader2 className='w-4 h-4 mr-2 animate-spin' /> Please wait
       </Button>
     ) : (
-      <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold tracking-wider flex items-center justify-center gap-2">
+      <Button type="submit" className="flex items-center justify-center w-full gap-2 font-bold tracking-wider text-white bg-blue-600 hover:bg-blue-700">
         <Rocket size={16} />
         Post New Job
       </Button>
@@ -119,7 +120,7 @@ const WarningMessage = () => (
   <motion.p 
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className='text-sm text-red-600 font-semibold text-center mt-4'
+    className='mt-4 text-sm font-semibold text-center text-red-600'
   >
     *Please register a company first before posting jobs
   </motion.p>
@@ -203,13 +204,13 @@ const PostJob = () => {
     return (
         <div className="min-h-screen text-gray-800 font-[Inter] bg-gradient-to-b from-gray-50 to-white">
             <Navbar />
-            <div className="flex items-center justify-center w-screen my-10 px-6">
+            <div className="flex items-center justify-center w-screen px-6 my-10">
                 <motion.form 
                     onSubmit={submitHandler} 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full max-w-5xl p-8 md:p-10 bg-white border border-gray-200 shadow-lg hover:shadow-xl rounded-2xl transition-all duration-500"
+                    className="w-full max-w-5xl p-8 transition-all duration-500 bg-white border border-gray-200 shadow-lg md:p-10 hover:shadow-xl rounded-2xl"
                 >
                     <PageHeader 
                         title="💼 Post a New Job" 
@@ -220,7 +221,7 @@ const PostJob = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                        className="grid grid-cols-1 gap-6 md:grid-cols-2"
                     >
                         {fields.map((field, index) => (
                             <FormField

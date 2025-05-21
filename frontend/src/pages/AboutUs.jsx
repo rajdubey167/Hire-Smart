@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Target, Award, Heart, Clock, Shield } from 'lucide-react';
 import Navbar from '../components/shared/Navbar';
@@ -135,7 +134,7 @@ const AboutUs = () => {
                 We believe that everyone deserves access to quality home services without the hassle of endless searching and uncertainty.
               </p>
               <p>
-                By creating a trusted platform that connects homeowners with verified professionals, we're transforming the way people 
+                By creating a trusted platform that connects homeowners with verified professionals, we&apos;re transforming the way people 
                 approach home projects, big and small.
               </p>
             </motion.div>

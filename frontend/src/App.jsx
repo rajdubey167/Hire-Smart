@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from './components/layouts/MainLayout';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
@@ -23,7 +23,7 @@ import Contact from './components/Contact';
 import BlogSection from './components/BlogSection';
 import HelpCenter from './pages/HelpCenter';
 
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
     path: '/',
     element: (

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { USER_API_END_POINT } from "@/utils/constant";
@@ -45,7 +46,7 @@ const StudentCard = ({ student }) => {
       {/* Profile Image with Overlay */}
       <div className="relative h-40 overflow-hidden">
         <div
-          className="w-full h-full bg-center bg-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full transition-transform duration-500 bg-center bg-cover group-hover:scale-110"
           style={{
             backgroundImage: `url(${student.profile?.profilePhoto || "https://via.placeholder.com/150"})`,
           }}
@@ -53,13 +54,13 @@ const StudentCard = ({ student }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         
         {/* Rating Badge */}
-        <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-teal-500 rounded-full">
+        <div className="absolute flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-teal-500 rounded-full top-3 right-3">
           <Star size={12} fill="currentColor" />
           <span>4.8</span>
         </div>
         
         {/* Location Badge */}
-        <div className="absolute bottom-3 left-3 flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-black/50 backdrop-blur-sm rounded-full">
+        <div className="absolute flex items-center gap-1 px-2 py-1 text-xs font-medium text-white rounded-full bottom-3 left-3 bg-black/50 backdrop-blur-sm">
           <MapPin size={12} />
           <span>Available Now</span>
         </div>
@@ -69,7 +70,7 @@ const StudentCard = ({ student }) => {
       <div className="p-5 space-y-4">
         {/* Name and Title */}
         <div>
-          <h3 className="text-xl font-bold text-gray-800 group-hover:text-teal-600 transition-colors">
+          <h3 className="text-xl font-bold text-gray-800 transition-colors group-hover:text-teal-600">
             {student.fullname}
           </h3>
           <div className="flex items-center gap-2 mt-1">
@@ -83,7 +84,7 @@ const StudentCard = ({ student }) => {
         </div>
 
         {/* Bio Section */}
-        <div className="p-3 text-sm text-gray-600 bg-gray-50 rounded-lg border border-gray-100">
+        <div className="p-3 text-sm text-gray-600 border border-gray-100 rounded-lg bg-gray-50">
           <p className="line-clamp-2">{student.profile?.bio || "Dream big. Hustle harder. 🚀"}</p>
         </div>
 
@@ -109,7 +110,7 @@ const SectionHeader = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="text-center mb-16"
+      className="mb-16 text-center"
     >
       <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-sm font-medium text-teal-700 bg-teal-100 rounded-full">
         <Sparkles size={16} />

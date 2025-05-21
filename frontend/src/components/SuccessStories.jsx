@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote, Star, ArrowRight } from 'lucide-react';

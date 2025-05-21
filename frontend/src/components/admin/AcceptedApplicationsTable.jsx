@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { APPLICATION_API_END_POINT } from '@/utils/constant';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
@@ -57,15 +58,15 @@ const PageHeader = ({ title, subtitle }) => (
     transition={{ duration: 0.6 }}
     className="mb-8 text-center"
   >
-    <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 tracking-wide font-sans">
+    <h2 className="font-sans text-3xl font-bold tracking-wide text-indigo-600 md:text-4xl">
       {title}
     </h2>
-    {subtitle && <p className="text-gray-500 mt-2 font-medium">{subtitle}</p>}
+    {subtitle && <p className="mt-2 font-medium text-gray-500">{subtitle}</p>}
   </motion.div>
 );
 
 const TableHeaderCell = ({ children, icon }) => (
-  <TableHead className="px-4 py-3 text-indigo-700 font-semibold">
+  <TableHead className="px-4 py-3 font-semibold text-indigo-700">
     <div className="flex items-center justify-center gap-2">
       {icon && icon}
       <span className="whitespace-nowrap">{children}</span>
@@ -86,7 +87,7 @@ const PaymentButton = ({ status, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="flex items-center justify-center gap-1 px-3 py-1 text-sm text-white transition bg-indigo-500 rounded-full shadow hover:bg-indigo-600 w-full"
+      className="flex items-center justify-center w-full gap-1 px-3 py-1 text-sm text-white transition bg-indigo-500 rounded-full shadow hover:bg-indigo-600"
     >
       <CreditCard size={16} />
       <span>Pay Now</span>
@@ -100,7 +101,7 @@ const RatingSelector = ({ value, onChange, onSubmit }) => (
       <select
         value={value || 0}
         onChange={(e) => onChange(e.target.value)}
-        className="p-2 pr-8 text-gray-700 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 font-medium"
+        className="p-2 pr-8 font-medium text-gray-700 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
       >
         <option value="0" disabled>Rate</option>
         {[1, 2, 3, 4, 5].map((score) => (
@@ -115,7 +116,7 @@ const RatingSelector = ({ value, onChange, onSubmit }) => (
     </div>
     <button
       onClick={onSubmit}
-      className="px-3 py-1 text-white transition bg-indigo-500 rounded-md hover:bg-indigo-600 font-medium"
+      className="px-3 py-1 font-medium text-white transition bg-indigo-500 rounded-md hover:bg-indigo-600"
     >
       Submit
     </button>
@@ -124,7 +125,7 @@ const RatingSelector = ({ value, onChange, onSubmit }) => (
 
 const FeedbackButton = ({ onClick }) => (
   <button
-    className="flex items-center justify-center gap-1 px-3 py-1 text-white transition bg-indigo-600 rounded-md shadow hover:bg-indigo-700 w-full font-medium"
+    className="flex items-center justify-center w-full gap-1 px-3 py-1 font-medium text-white transition bg-indigo-600 rounded-md shadow hover:bg-indigo-700"
     onClick={onClick}
   >
     <MessageSquare size={16} />
@@ -164,10 +165,10 @@ const FeedbackModal = ({ isOpen, onClose, feedback }) => (
           {feedback === 'No feedback provided' ? (
             <div className="flex flex-col items-center justify-center p-6 text-center">
               <AlertCircle size={48} className="mb-4 text-gray-400" />
-              <p className="text-gray-500 font-medium">No feedback has been provided for this application.</p>
+              <p className="font-medium text-gray-500">No feedback has been provided for this application.</p>
             </div>
           ) : (
-            <p className="text-sm leading-relaxed text-gray-600 sm:text-base font-medium">{feedback}</p>
+            <p className="text-sm font-medium leading-relaxed text-gray-600 sm:text-base">{feedback}</p>
           )}
         </motion.div>
       </motion.div>
@@ -281,7 +282,7 @@ const AcceptedApplicants = () => {
 
             <div className="overflow-x-auto border border-gray-200 shadow-inner rounded-xl bg-gray-50">
                 <Table>
-                    <TableCaption className="text-gray-500 font-medium">List of all accepted candidates</TableCaption>
+                    <TableCaption className="font-medium text-gray-500">List of all accepted candidates</TableCaption>
                     <TableHeader>
                         <TableRow className="text-indigo-700 bg-indigo-50">
                             <TableHeaderCell icon={<User size={16} />}>Full Name</TableHeaderCell>
@@ -293,7 +294,7 @@ const AcceptedApplicants = () => {
                             <TableHeaderCell icon={<IndianRupee size={16} />}>Charge</TableHeaderCell>
                             <TableHeaderCell icon={<CreditCard size={16} />}>Payment</TableHeaderCell>
                             <TableHeaderCell icon={<Star size={16} />}>Rating</TableHeaderCell>
-                            <TableHeaderCell icon={<MessageSquare size={16} />}>Labour's Feedback</TableHeaderCell>
+                            <TableHeaderCell icon={<MessageSquare size={16} />}>Labour&apos;s Feedback</TableHeaderCell>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -308,13 +309,13 @@ const AcceptedApplicants = () => {
                                     transition={{ delay: index * 0.05 }}
                                     className="transition-all duration-300 hover:bg-indigo-50"
                                 >
-                                    <TableCell className="px-4 py-3 text-center font-medium">{item?.applicant?.fullname}</TableCell>
-                                    <TableCell className="px-4 py-3 text-center font-medium">{item?.applicant?.email}</TableCell>
-                                    <TableCell className="px-4 py-3 text-center font-medium">{item?.applicant?.phoneNumber}</TableCell>
+                                    <TableCell className="px-4 py-3 font-medium text-center">{item?.applicant?.fullname}</TableCell>
+                                    <TableCell className="px-4 py-3 font-medium text-center">{item?.applicant?.email}</TableCell>
+                                    <TableCell className="px-4 py-3 font-medium text-center">{item?.applicant?.phoneNumber}</TableCell>
                                     <TableCell className="px-4 py-3 text-center">
                                         {item?.applicant?.profile?.resume ? (
                                             <a
-                                                className="flex items-center justify-center gap-1 text-indigo-500 hover:underline font-medium"
+                                                className="flex items-center justify-center gap-1 font-medium text-indigo-500 hover:underline"
                                                 href={item?.applicant?.profile?.resume}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
@@ -326,8 +327,8 @@ const AcceptedApplicants = () => {
                                             <span className="font-medium">NA</span>
                                         )}
                                     </TableCell>
-                                    <TableCell className="px-4 py-3 text-center font-medium">{item?.createdAt.split("T")[0]}</TableCell>
-                                    <TableCell className="px-4 py-3 text-center font-medium">{item?.job?.company?.name || 'N/A'}</TableCell>
+                                    <TableCell className="px-4 py-3 font-medium text-center">{item?.createdAt.split("T")[0]}</TableCell>
+                                    <TableCell className="px-4 py-3 font-medium text-center">{item?.job?.company?.name || 'N/A'}</TableCell>
                                     <TableCell className="px-4 py-3 text-center">
                                         {item?.job?.salary ? (
                                             <div className="flex items-center justify-center gap-1">

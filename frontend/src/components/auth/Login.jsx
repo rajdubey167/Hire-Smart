@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -8,7 +8,7 @@ import { USER_API_END_POINT } from '@/utils/constant';
 import { toast } from 'sonner';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading, setUser } from '@/redux/authSlice';
-import { Loader2, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { Loader2, Mail, Lock, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navbar from '../shared/Navbar';
 
@@ -61,9 +61,9 @@ const Login = () => {
       <Navbar />
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-40 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-40 left-20 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute bg-purple-300 rounded-full -top-40 -left-40 w-80 h-80 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 bg-indigo-300 rounded-full -right-40 w-80 h-80 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute bg-pink-300 rounded-full -bottom-40 left-20 w-80 h-80 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
 
       {/* Smooth Landing Animation */}
@@ -71,7 +71,7 @@ const Login = () => {
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="flex items-center justify-center px-4 py-12 relative z-10"
+        className="relative z-10 flex items-center justify-center px-4 py-12"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -126,7 +126,7 @@ const Login = () => {
                     name="email"
                     onChange={changeEventHandler}
                     placeholder="joe@gmail.com"
-                    className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm"
+                    className="w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
                   />
                 </div>
               </motion.div>
@@ -149,7 +149,7 @@ const Login = () => {
                     name="password"
                     onChange={changeEventHandler}
                     placeholder="********"
-                    className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm"
+                    className="w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
                   />
                 </div>
               </motion.div>
@@ -163,7 +163,7 @@ const Login = () => {
               >
                 <Label className="text-sm font-medium text-white">I am a</Label>
                 <div className="flex gap-4 p-2 bg-white/10 rounded-xl backdrop-blur-sm">
-                  <label className="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-white/20">
+                  <label className="flex items-center justify-center flex-1 gap-2 p-3 transition-all duration-200 rounded-lg cursor-pointer hover:bg-white/20">
                     <input
                       type="radio"
                       name="role"
@@ -174,7 +174,7 @@ const Login = () => {
                     />
                     <span className="text-sm font-medium text-white">Labour</span>
                   </label>
-                  <label className="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-white/20">
+                  <label className="flex items-center justify-center flex-1 gap-2 p-3 transition-all duration-200 rounded-lg cursor-pointer hover:bg-white/20">
                     <input
                       type="radio"
                       name="role"
@@ -190,7 +190,7 @@ const Login = () => {
 
               {/* Login Button */}
               {loading ? (
-                <Button className="w-full py-3 mt-6 text-white bg-white/20 backdrop-blur-md border border-white/30 rounded-xl shadow-lg hover:bg-white/30 transition-all duration-300">
+                <Button className="w-full py-3 mt-6 text-white transition-all duration-300 border shadow-lg bg-white/20 backdrop-blur-md border-white/30 rounded-xl hover:bg-white/30">
                   <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                   Logging in...
                 </Button>
@@ -202,7 +202,7 @@ const Login = () => {
                 >
                   <Button
                     type="submit"
-                    className="w-full py-3 mt-6 text-white bg-white/20 backdrop-blur-md border border-white/30 rounded-xl shadow-lg hover:bg-white/30 transition-all duration-300 group"
+                    className="w-full py-3 mt-6 text-white transition-all duration-300 border shadow-lg bg-white/20 backdrop-blur-md border-white/30 rounded-xl hover:bg-white/30 group"
                   >
                     <span className="flex items-center justify-center">
                       Sign In
@@ -219,7 +219,7 @@ const Login = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 Don&apos;t have an account?{' '}
-                <Link to="/signup" className="font-medium text-white hover:text-white/90 hover:underline transition-colors duration-200">
+                <Link to="/signup" className="font-medium text-white transition-colors duration-200 hover:text-white/90 hover:underline">
                   Sign up here
                 </Link>
               </motion.p>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from '../ui/button'
 import CompaniesTable from './CompaniesTable'
 import { useNavigate } from 'react-router-dom'
@@ -20,7 +19,7 @@ const Companies = () => {
                 <div className='flex items-center justify-end my-5'>
                     <Button 
                         onClick={() => navigate("/admin/companies/create")}
-                        className="bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-2"
+                        className="flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-700"
                     >
                         <Plus size={16} />
                         Add Company

@@ -19,8 +19,15 @@ export const register = async (req, res) => {
         let cloudResponse;
         
         if (file) {
-            const fileUri = getDataUri(file);
-            cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+            try {
+                const fileUri = getDataUri(file);
+                cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+            } catch (uploadError) {
+                return res.status(400).json({
+                    message: "Error uploading image. Please try again.",
+                    success: false
+                });
+            }
         }
 
         const user = await User.findOne({ email });
@@ -40,7 +47,7 @@ export const register = async (req, res) => {
             password: hashedPassword,
             role,
             profile: {
-                profilePhoto: cloudResponse ? cloudResponse.secure_url : null, // conditional for file upload
+                profilePhoto: cloudResponse ? cloudResponse.secure_url : null,
             }
         });
 
@@ -50,6 +57,10 @@ export const register = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
+        return res.status(500).json({
+            message: "Internal server error",
+            success: false
+        });
     }
 }
 
@@ -103,7 +114,12 @@ export const login = async (req, res) => {
             profile: user.profile
         }
 
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'strict' }).json({
+        return res.status(200).cookie("token", token, { 
+            maxAge: 1 * 24 * 60 * 60 * 1000, 
+            httpOnly: true, 
+            sameSite: 'lax',
+            secure: false // Set to true in production
+        }).json({
             message: `Welcome back ${user.fullname}`,
             user,
             success: true

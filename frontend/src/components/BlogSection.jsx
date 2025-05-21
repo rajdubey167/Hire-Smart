@@ -99,7 +99,7 @@ const BlogSection = () => {
                   </div>
                   <h3 className="blog-card-title">Essential Skills for the Digital Age</h3>
                   <p className="blog-card-excerpt">
-                    Discover the must-have skills that will help you thrive in today's digital workplace.
+                    Discover the must-have skills that will help you thrive in today&apos;s digital workplace.
                   </p>
                   <Link to="/blog/digital-skills" className="blog-card-link">
                     Read More →

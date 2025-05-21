@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 import { 
@@ -12,7 +12,6 @@ import {
   XCircle,
   Search,
   Download,
-  Eye
 } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { toast } from 'sonner';
@@ -52,19 +51,19 @@ const PageHeader = ({ title, subtitle }) => (
     transition={{ duration: 0.6 }}
     className="mb-8"
   >
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-indigo-600 tracking-wide font-sans">
+        <h2 className="font-sans text-3xl font-bold tracking-wide text-indigo-600 md:text-4xl">
           {title}
         </h2>
-        {subtitle && <p className="text-gray-500 mt-2 font-medium">{subtitle}</p>}
+        {subtitle && <p className="mt-2 font-medium text-gray-500">{subtitle}</p>}
       </div>
     </div>
   </motion.div>
 );
 
 const TableHeaderCell = ({ children, icon }) => (
-  <TableHead className="px-4 py-3 text-indigo-600 font-semibold">
+  <TableHead className="px-4 py-3 font-semibold text-indigo-600">
     <div className="flex items-center gap-2">
       {icon && icon}
       <span className="whitespace-nowrap">{children}</span>
@@ -79,7 +78,7 @@ const SearchBar = () => (
     </div>
     <input
       type="text"
-      className="block w-full p-3 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+      className="block w-full p-3 pl-10 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
       placeholder="Search applicants..."
     />
   </div>
@@ -104,11 +103,11 @@ const StatusButton = ({ status, onClick }) => {
 };
 
 const ResumeLink = ({ resume, originalName }) => {
-  if (!resume) return <span className="text-gray-400 font-medium">NA</span>;
+  if (!resume) return <span className="font-medium text-gray-400">NA</span>;
   
   return (
     <a
-      className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 font-medium"
+      className="flex items-center gap-2 font-medium text-indigo-600 hover:text-indigo-800"
       href={resume}
       target="_blank"
       rel="noopener noreferrer"
@@ -169,13 +168,13 @@ const ApplicantsTable = () => {
                 subtitle="Review and manage job applications from candidates"
             />
             
-            <div className="mb-6 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+            <div className="flex flex-col items-start justify-between gap-4 mb-6 sm:flex-row sm:items-center">
                 <SearchBar />
             </div>
             
             <div className="overflow-x-auto border border-gray-200 rounded-xl">
                 <Table className="text-gray-700">
-                    <TableCaption className="mt-4 text-sm text-gray-500 font-medium">A list of your recent applicants</TableCaption>
+                    <TableCaption className="mt-4 text-sm font-medium text-gray-500">A list of your recent applicants</TableCaption>
                     <TableHeader>
                         <TableRow className="bg-indigo-50">
                             <TableHeaderCell icon={<User size={16} />}>Full Name</TableHeaderCell>
@@ -183,7 +182,7 @@ const ApplicantsTable = () => {
                             <TableHeaderCell icon={<Phone size={16} />}>Contact</TableHeaderCell>
                             <TableHeaderCell icon={<FileText size={16} />}>ID-Proof</TableHeaderCell>
                             <TableHeaderCell icon={<Calendar size={16} />}>Date</TableHeaderCell>
-                            <TableHead className="px-4 py-3 text-right text-indigo-600 font-semibold">Action</TableHead>
+                            <TableHead className="px-4 py-3 font-semibold text-right text-indigo-600">Action</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -195,7 +194,7 @@ const ApplicantsTable = () => {
                                     <motion.tr
                                         key={item._id}
                                         variants={itemVariants}
-                                        className="transition-colors duration-300 hover:bg-indigo-50 border-b border-gray-100"
+                                        className="transition-colors duration-300 border-b border-gray-100 hover:bg-indigo-50"
                                     >
                                         <TableCell className="px-4 py-4 font-medium">{item?.applicant?.fullname}</TableCell>
                                         <TableCell className="px-4 py-4 font-medium">{item?.applicant?.email}</TableCell>
@@ -212,7 +211,7 @@ const ApplicantsTable = () => {
                                         <TableCell className="px-4 py-4 text-right">
                                             <Popover>
                                                 <PopoverTrigger>
-                                                    <button className="p-2 text-gray-500 hover:text-indigo-500 transition-colors duration-200 rounded-full hover:bg-indigo-50">
+                                                    <button className="p-2 text-gray-500 transition-colors duration-200 rounded-full hover:text-indigo-500 hover:bg-indigo-50">
                                                         <MoreHorizontal size={20} />
                                                     </button>
                                                 </PopoverTrigger>

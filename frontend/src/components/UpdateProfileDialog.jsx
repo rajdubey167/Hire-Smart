@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useState } from 'react'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog'
 import { Label } from './ui/label'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
-import { Loader2, X } from 'lucide-react'
+import { Loader2} from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
@@ -77,7 +78,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                 </DialogHeader>
                 <form onSubmit={submitHandler}>
                     <div className='grid gap-4 py-4'>
-                        <div className='grid grid-cols-4 items-center gap-4'>
+                        <div className='grid items-center grid-cols-4 gap-4'>
                             <Label htmlFor="fullname" className="text-right">Name</Label>
                             <Input
                                 id="fullname"
@@ -88,7 +89,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 className="col-span-3"
                             />
                         </div>
-                        <div className='grid grid-cols-4 items-center gap-4'>
+                        <div className='grid items-center grid-cols-4 gap-4'>
                             <Label htmlFor="email" className="text-right">Email</Label>
                             <Input
                                 id="email"
@@ -99,7 +100,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 className="col-span-3"
                             />
                         </div>
-                        <div className='grid grid-cols-4 items-center gap-4'>
+                        <div className='grid items-center grid-cols-4 gap-4'>
                             <Label htmlFor="phoneNumber" className="text-right">Number</Label>
                             <Input
                                 id="phoneNumber"
@@ -109,7 +110,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 className="col-span-3"
                             />
                         </div>
-                        <div className='grid grid-cols-4 items-center gap-4'>
+                        <div className='grid items-center grid-cols-4 gap-4'>
                             <Label htmlFor="bio" className="text-right">Bio</Label>
                             <Input
                                 id="bio"
@@ -119,7 +120,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 className="col-span-3"
                             />
                         </div>
-                        <div className='grid grid-cols-4 items-center gap-4'>
+                        <div className='grid items-center grid-cols-4 gap-4'>
                             <Label htmlFor="skills" className="text-right">Skills</Label>
                             <Input
                                 id="skills"
@@ -129,7 +130,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                                 className="col-span-3"
                             />
                         </div>
-                        <div className='grid grid-cols-4 items-center gap-4'>
+                        <div className='grid items-center grid-cols-4 gap-4'>
                             <Label htmlFor="file" className="text-right">ID Proof</Label>
                             <Input
                                 id="file"
@@ -145,7 +146,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                         {
                             loading ? (
                                 <Button className="w-full my-4" disabled>
-                                    <Loader2 className='mr-2 h-4 w-4 animate-spin' /> 
+                                    <Loader2 className='w-4 h-4 mr-2 animate-spin' /> 
                                     Please wait
                                 </Button>
                             ) : (

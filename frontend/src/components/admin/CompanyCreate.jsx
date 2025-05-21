@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
-import { Button } from '../ui/button'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { COMPANY_API_END_POINT } from '@/utils/constant'
@@ -9,7 +9,7 @@ import { toast } from 'sonner'
 import { useDispatch } from 'react-redux'
 import { setSingleCompany } from '@/redux/companySlice'
 import Footer from '../shared/Footer'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Building2, ArrowLeft, Rocket, Loader2 } from 'lucide-react'
 import Navbar from '../shared/Navbar'
 
@@ -45,10 +45,10 @@ const PageHeader = ({ title, subtitle }) => (
     transition={{ duration: 0.6 }}
     className="mb-10 text-center"
   >
-    <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-transparent bg-clip-text">
+    <h1 className="text-3xl font-extrabold text-transparent md:text-4xl bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 bg-clip-text">
       {title}
     </h1>
-    {subtitle && <p className="text-gray-600 mt-2 text-sm">{subtitle}</p>}
+    {subtitle && <p className="mt-2 text-sm text-gray-600">{subtitle}</p>}
   </motion.div>
 );
 
@@ -57,13 +57,13 @@ const FormField = ({ label, value, onChange, placeholder, icon }) => (
     variants={itemVariants}
     className="mb-6"
   >
-    <Label className="text-sm text-blue-600 font-medium flex items-center gap-2">
+    <Label className="flex items-center gap-2 text-sm font-medium text-blue-600">
       {icon && icon}
       {label}
     </Label>
     <Input
       type="text"
-      className="mt-2 bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-400"
+      className="mt-2 text-gray-800 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-400"
       placeholder={placeholder}
       value={value}
       onChange={onChange}
@@ -135,7 +135,7 @@ const CompanyCreate = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="max-w-3xl mx-auto mt-16 px-6 py-12 rounded-2xl bg-white border border-gray-200 shadow-lg"
+                className="max-w-3xl px-6 py-12 mx-auto mt-16 bg-white border border-gray-200 shadow-lg rounded-2xl"
                 style={{marginBottom:"324px"}}
             >
                 <PageHeader 
@@ -158,7 +158,7 @@ const CompanyCreate = () => {
 
                     <motion.div 
                         variants={itemVariants}
-                        className="flex items-center gap-4 mt-10 justify-center"
+                        className="flex items-center justify-center gap-4 mt-10"
                     >
                         <ActionButton 
                             icon={<ArrowLeft size={16} />}

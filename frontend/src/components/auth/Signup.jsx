@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
-import { RadioGroup } from '../ui/radio-group';
 import { Button } from '../ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -82,26 +81,26 @@ const Signup = () => {
   }, [user, navigate]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 relative overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500">
       <Navbar />
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-40 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-40 left-20 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute bg-purple-300 rounded-full -top-40 -left-40 w-80 h-80 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 bg-indigo-300 rounded-full -right-40 w-80 h-80 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute bg-pink-300 rounded-full -bottom-40 left-20 w-80 h-80 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
       
       <motion.div 
         initial={{ opacity: 0, y: -20 }} 
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 0.8 }} 
-        className="flex items-center justify-center min-h-screen py-12 px-4 relative z-10"
+        className="relative z-10 flex items-center justify-center min-h-screen px-4 py-12"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="w-full max-w-lg backdrop-blur-md bg-white/30 shadow-2xl border border-white/20 rounded-2xl overflow-hidden"
+          className="w-full max-w-lg overflow-hidden border shadow-2xl backdrop-blur-md bg-white/30 border-white/20 rounded-2xl"
         >
           {/* Decorative top bar */}
           <div className="h-1 bg-gradient-to-r from-white/50 via-white/30 to-transparent"></div>
@@ -150,7 +149,7 @@ const Signup = () => {
                     name="fullname"
                     onChange={changeEventHandler}
                     placeholder="John Doe"
-                    className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm"
+                    className="w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
                   />
                 </div>
               </motion.div>
@@ -173,7 +172,7 @@ const Signup = () => {
                     name="email"
                     onChange={changeEventHandler}
                     placeholder="johndoe@gmail.com"
-                    className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm"
+                    className="w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
                   />
                 </div>
               </motion.div>
@@ -196,7 +195,7 @@ const Signup = () => {
                     name="phoneNumber"
                     onChange={changeEventHandler}
                     placeholder="9839298567"
-                    className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm"
+                    className="w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
                   />
                 </div>
               </motion.div>
@@ -219,7 +218,7 @@ const Signup = () => {
                     name="password"
                     onChange={changeEventHandler}
                     placeholder="********"
-                    className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm"
+                    className="w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm"
                   />
                 </div>
               </motion.div>
@@ -233,7 +232,7 @@ const Signup = () => {
               >
                 <Label className="text-sm font-medium text-white">I am a</Label>
                 <div className="flex gap-4 p-2 bg-white/10 rounded-xl backdrop-blur-sm">
-                  <label className="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-white/20">
+                  <label className="flex items-center justify-center flex-1 gap-2 p-3 transition-all duration-200 rounded-lg cursor-pointer hover:bg-white/20">
                     <input
                       type="radio"
                       name="role"
@@ -244,7 +243,7 @@ const Signup = () => {
                     />
                     <span className="text-sm font-medium text-white">Labour</span>
                   </label>
-                  <label className="flex-1 flex items-center justify-center gap-2 p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-white/20">
+                  <label className="flex items-center justify-center flex-1 gap-2 p-3 transition-all duration-200 rounded-lg cursor-pointer hover:bg-white/20">
                     <input
                       type="radio"
                       name="role"
@@ -267,7 +266,7 @@ const Signup = () => {
               >
                 <Label className="text-sm font-medium text-white">Profile Photo</Label>
                 <div className="flex flex-col items-center gap-4">
-                  <div className="relative w-24 h-24 overflow-hidden rounded-full bg-white/20 border-2 border-white/30">
+                  <div className="relative w-24 h-24 overflow-hidden border-2 rounded-full bg-white/20 border-white/30">
                     {previewImage ? (
                       <img
                         src={previewImage}
@@ -289,30 +288,30 @@ const Signup = () => {
                         accept="image/*"
                         type="file"
                         onChange={changeFileHandler}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        className="absolute inset-0 z-10 w-full h-full opacity-0 cursor-pointer"
                       />
-                      <div className="w-full pl-10 pr-4 py-3 text-white placeholder-white/50 bg-white/20 border border-white/30 rounded-xl shadow-sm focus:border-white/50 focus:ring-2 focus:ring-white/30 transition-all duration-200 backdrop-blur-sm flex items-center justify-between">
+                      <div className="flex items-center justify-between w-full py-3 pl-10 pr-4 text-white transition-all duration-200 border shadow-sm placeholder-white/50 bg-white/20 border-white/30 rounded-xl focus:border-white/50 focus:ring-2 focus:ring-white/30 backdrop-blur-sm">
                         <span className="text-white/70">{input.file ? input.file.name : 'Select a photo'}</span>
-                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200">
+                        <div className="flex items-center justify-center w-8 h-8 transition-colors duration-200 rounded-full bg-white/20 hover:bg-white/30">
                           <Upload className="w-4 h-4 text-white" />
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <p className="text-xs text-white/60 mt-1">Upload a profile photo (optional)</p>
+                <p className="mt-1 text-xs text-white/60">Upload a profile photo (optional)</p>
               </motion.div>
 
               {/* Submit Button */}
               {loading ? (
-                <Button className="w-full py-3 mt-6 text-white bg-white/20 backdrop-blur-md border border-white/30 rounded-xl shadow-lg hover:bg-white/30 transition-all duration-300">
+                <Button className="w-full py-3 mt-6 text-white transition-all duration-300 border shadow-lg bg-white/20 backdrop-blur-md border-white/30 rounded-xl hover:bg-white/30">
                   <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                   Creating Account...
                 </Button>
               ) : (
                 <motion.button
                   type="submit"
-                  className="w-full py-3 mt-6 text-white bg-white/20 backdrop-blur-md border border-white/30 rounded-xl shadow-lg hover:bg-white/30 transition-all duration-300 group"
+                  className="w-full py-3 mt-6 text-white transition-all duration-300 border shadow-lg bg-white/20 backdrop-blur-md border-white/30 rounded-xl hover:bg-white/30 group"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1.2 }}
@@ -332,7 +331,7 @@ const Signup = () => {
               >
                 <span className="text-sm text-white/80">
                   Already have an account?{' '}
-                  <Link to="/login" className="font-medium text-white hover:text-white/90 hover:underline transition-colors duration-200">
+                  <Link to="/login" className="font-medium text-white transition-colors duration-200 hover:text-white/90 hover:underline">
                     Login
                   </Link>
                 </span>

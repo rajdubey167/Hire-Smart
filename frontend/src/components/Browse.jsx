@@ -70,7 +70,7 @@ const Browse = () => {
   }, [allJobs, searchedQuery]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-indigo-950 to-gray-900 text-white font-sans">
+    <div className="min-h-screen font-sans text-white bg-gradient-to-b from-gray-900 via-indigo-950 to-gray-900">
       <Navbar />
       {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -83,7 +83,7 @@ const Browse = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="relative max-w-7xl mx-auto pt-8 px-4 sm:px-6 lg:px-8"
+        className="relative px-4 pt-8 mx-auto max-w-7xl sm:px-6 lg:px-8"
       >
         {/* Header Section */}
         <div className="mb-12 text-center">
@@ -103,7 +103,7 @@ const Browse = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500 mb-4"
+            className="mb-4 text-4xl font-bold text-transparent sm:text-5xl bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500"
           >
             {searchedQuery ? `Results for "${searchedQuery}"` : 'Browse All Jobs'}
           </motion.h1>
@@ -112,7 +112,7 @@ const Browse = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="text-gray-300 text-lg max-w-2xl mx-auto"
+            className="max-w-2xl mx-auto text-lg text-gray-300"
           >
             {filteredJobs.length} {filteredJobs.length === 1 ? 'job' : 'jobs'} available for you to explore
           </motion.p>
@@ -126,15 +126,15 @@ const Browse = () => {
           className="mb-10"
         >
           <div className="relative max-w-3xl mx-auto">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-indigo-400" />
+            <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+              <Search className="w-5 h-5 text-indigo-400" />
             </div>
             <input
               type="text"
               value={searchInput}
               onChange={handleSearchChange}
               placeholder="Search jobs by title, company, or keyword..."
-              className="w-full pl-12 pr-4 py-4 bg-gray-800/70 backdrop-blur-sm border border-gray-700/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-white placeholder-gray-500 shadow-lg"
+              className="w-full py-4 pl-12 pr-4 text-white placeholder-gray-500 border shadow-lg bg-gray-800/70 backdrop-blur-sm border-gray-700/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
           </div>
         </motion.div>
@@ -144,33 +144,33 @@ const Browse = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"
+          className="grid grid-cols-1 gap-4 mb-10 sm:grid-cols-3"
         >
-          <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/30 rounded-xl p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/20 text-indigo-400">
+          <div className="flex items-center gap-3 p-4 border bg-gray-800/40 backdrop-blur-sm border-gray-700/30 rounded-xl">
+            <div className="flex items-center justify-center w-10 h-10 text-indigo-400 rounded-full bg-indigo-500/20">
               <Building2 size={20} />
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Companies</p>
-              <p className="text-white font-semibold">{stats.companies}</p>
+              <p className="text-sm text-gray-400">Companies</p>
+              <p className="font-semibold text-white">{stats.companies}</p>
             </div>
           </div>
-          <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/30 rounded-xl p-4 flex items-center gap-3">
+          <div className="flex items-center gap-3 p-4 border bg-gray-800/40 backdrop-blur-sm border-gray-700/30 rounded-xl">
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400">
               <MapPin size={20} />
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Locations</p>
-              <p className="text-white font-semibold">{stats.locations}</p>
+              <p className="text-sm text-gray-400">Locations</p>
+              <p className="font-semibold text-white">{stats.locations}</p>
             </div>
           </div>
-          <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/30 rounded-xl p-4 flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/20 text-purple-400">
+          <div className="flex items-center gap-3 p-4 border bg-gray-800/40 backdrop-blur-sm border-gray-700/30 rounded-xl">
+            <div className="flex items-center justify-center w-10 h-10 text-purple-400 rounded-full bg-purple-500/20">
               <Clock size={20} />
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Posted Today</p>
-              <p className="text-white font-semibold">{stats.recentJobs}</p>
+              <p className="text-sm text-gray-400">Posted Today</p>
+              <p className="font-semibold text-white">{stats.recentJobs}</p>
             </div>
           </div>
         </motion.div>
@@ -180,18 +180,18 @@ const Browse = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="bg-gray-800/30 backdrop-blur-md rounded-2xl border border-gray-700/50 shadow-xl overflow-hidden"
+          className="overflow-hidden border shadow-xl bg-gray-800/30 backdrop-blur-md rounded-2xl border-gray-700/50"
         >
           {filteredJobs.length === 0 ? (
             <div className="p-16 text-center">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-indigo-500/20 flex items-center justify-center">
-                <Briefcase className="h-10 w-10 text-indigo-400" />
+              <div className="flex items-center justify-center w-20 h-20 mx-auto mb-6 rounded-full bg-indigo-500/20">
+                <Briefcase className="w-10 h-10 text-indigo-400" />
               </div>
-              <h3 className="text-2xl font-semibold text-white mb-3">No jobs found</h3>
-              <p className="text-gray-400 max-w-md mx-auto">Try adjusting your search or filters to find more opportunities. We're constantly adding new jobs to our platform.</p>
+              <h3 className="mb-3 text-2xl font-semibold text-white">No jobs found</h3>
+              <p className="max-w-md mx-auto text-gray-400">Try adjusting your search or filters to find more opportunities. We&apos;re constantly adding new jobs to our platform.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+            <div className="grid grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredJobs.map((job, idx) => (
                 <motion.div
                   key={job._id}
@@ -201,7 +201,7 @@ const Browse = () => {
                   className="group bg-gray-900/60 backdrop-blur-sm rounded-xl border border-gray-700/50 hover:border-indigo-500/50 shadow-lg hover:shadow-[0_0_30px_rgba(99,102,241,0.15)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 >
                   <div className="p-5">
-                    <Job job={job} />
+                    <Job job={job} index={idx} />
                   </div>
                 </motion.div>
               ))}

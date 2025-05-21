@@ -1,9 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../ui/dialog';
 import { Avatar, AvatarImage } from '../ui/avatar';
-import { Button } from '../ui/button';
 import { LogOut, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // Animation variants
@@ -34,14 +33,14 @@ const itemVariants = {
 const UserProfileHeader = ({ user }) => {
   return (
     <motion.div 
-      className="flex items-center gap-3 p-3 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg border border-indigo-100"
+      className="flex items-center gap-3 p-3 border border-indigo-100 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50"
       variants={itemVariants}
     >
       <div className="relative">
-        <Avatar className="h-12 w-12 border-2 border-white shadow-md">
+        <Avatar className="w-12 h-12 border-2 border-white shadow-md">
           <AvatarImage src={user?.profile?.profilePhoto || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"} alt="profile" />
         </Avatar>
-        <div className="absolute -bottom-1 -right-1 flex items-center justify-center w-4 h-4 bg-green-500 rounded-full border-2 border-white">
+        <div className="absolute flex items-center justify-center w-4 h-4 bg-green-500 border-2 border-white rounded-full -bottom-1 -right-1">
           <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
         </div>
       </div>
@@ -82,7 +81,7 @@ const MenuItem = ({ icon, label, onClick, isDanger = false }) => {
 const UserProfileDialog = ({ open, setOpen, user, onLogout }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="sm:max-w-xs p-0 overflow-hidden bg-white rounded-lg border border-gray-200 shadow-lg">
+      <DialogContent className="p-0 overflow-hidden bg-white border border-gray-200 rounded-lg shadow-lg sm:max-w-xs">
         <DialogHeader className="p-4 pb-0">
           <DialogTitle className="text-lg font-bold text-gray-800">Account</DialogTitle>
           <DialogDescription className="text-xs text-gray-500">
@@ -120,7 +119,7 @@ const UserProfileDialog = ({ open, setOpen, user, onLogout }) => {
           </div>
         </motion.div>
         
-        <div className="p-3 text-center text-xs text-gray-500 bg-gray-50 border-t border-gray-100">
+        <div className="p-3 text-xs text-center text-gray-500 border-t border-gray-100 bg-gray-50">
           © {new Date().getFullYear()} Hire Smart
         </div>
       </DialogContent>

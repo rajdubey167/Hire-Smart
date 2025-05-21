@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Briefcase, Sparkles } from 'lucide-react';
 import LatestJobCards from './LatestJobCards';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './LatestJobs.css';
 
 // Animation variants for staggered animations
@@ -71,6 +72,7 @@ const EmptyState = () => {
 
 const LatestJobs = () => {
   const { allJobs } = useSelector(store => store.job);
+  const navigate = useNavigate();
   const hasJobs = allJobs.length > 0;
   const displayedJobs = hasJobs ? allJobs.slice(0, 6) : [];
 
@@ -86,9 +88,9 @@ const LatestJobs = () => {
             initial="hidden"
             animate="visible"
           >
-            {displayedJobs.map(job => (
+            {displayedJobs.map((job, index) => (
               <motion.div key={job._id} variants={itemVariants}>
-                <LatestJobCards job={job} />
+                <LatestJobCards job={job} index={index} />
               </motion.div>
             ))}
           </motion.div>
@@ -103,9 +105,12 @@ const LatestJobs = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            <a href="/browse" className="view-all-button">
+            <button 
+              onClick={() => navigate('/browse')} 
+              className="view-all-button"
+            >
               View All Jobs <Sparkles size={18} />
-            </a>
+            </button>
           </motion.div>
         )}
       </div>
