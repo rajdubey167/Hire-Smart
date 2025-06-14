@@ -1,3 +1,7 @@
+## 🌐 Live Demo
+
+- 🔗 Frontend: (https://hire-smart-frontend.vercel.app/)
+
 # 🛠️ Hire-Smart
 
 A **scalable full-stack labor marketplace** built with the **MERN stack**. This platform enables seamless interaction between clients and freelancers through secure authentication, a responsive UI, and real-time functionality.
@@ -92,14 +96,7 @@ A **scalable full-stack labor marketplace** built with the **MERN stack**. This 
 - [ ] Reviews & Ratings
 - [ ] Mobile responsiveness optimizations
 
-## 📄 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
 ## 🤝 Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
 
-## 📬 Contact
-
-Feel free to reach out via [LinkedIn](https://linkedin.com/in/your-profile) or [email@example.com] for questions or collaboration opportunities.
