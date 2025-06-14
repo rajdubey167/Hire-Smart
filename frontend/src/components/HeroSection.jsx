@@ -74,10 +74,10 @@ const HeroSection = () => {
                 delay: 5000,
                 disableOnInteraction: false,
             }}
-            className="relative w-full h-screen overflow-x-hidden"
+            className="relative w-full min-h-screen overflow-y-auto"
         >
             <SwiperSlide>
-                <div className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center">
+                <div className="relative flex flex-col items-center justify-center min-h-screen px-4 py-8 text-center">
                     {/* Background Image with Overlay */}
                     <div
                         className="absolute inset-0 w-full h-full bg-center bg-cover"
@@ -86,7 +86,9 @@ const HeroSection = () => {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                         }}
-                    ></div>
+                    >
+                        
+                    </div>
                     
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
@@ -98,7 +100,7 @@ const HeroSection = () => {
                     </div>
 
                     {/* Content Container */}
-                    <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
+                    <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-5xl py-8 mx-auto">
                         {/* Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: -20 }}
@@ -174,7 +176,7 @@ const HeroSection = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6, duration: 0.5 }}
-                            className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3"
+                            className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-3"
                         >
                             <StatCard icon={Building2} value="500+" label="Companies" />
                             <StatCard icon={Users} value="10,000+" label="Workers" />
@@ -186,7 +188,7 @@ const HeroSection = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.7, duration: 0.5 }}
-                            className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2"
+                            className="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2"
                         >
                             <FeatureCard 
                                 icon={MapPin} 
@@ -205,7 +207,7 @@ const HeroSection = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.8, duration: 0.5 }}
-                            className="flex flex-wrap items-center justify-center gap-4 mt-4"
+                            className="flex flex-wrap items-center justify-center gap-4 mb-4"
                         >
                             <div className="flex items-center gap-2 px-4 py-2 text-sm text-white border rounded-full bg-white/10 backdrop-blur-md border-white/20">
                                 <MapPin size={16} className="text-pink-400" />

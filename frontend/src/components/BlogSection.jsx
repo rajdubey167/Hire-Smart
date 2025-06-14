@@ -47,7 +47,7 @@ const BlogSection = () => {
                   <p className="blog-card-excerpt">
                     Learn the essential strategies to accelerate your career growth and achieve your professional goals.
                   </p>
-                  <Link to="/blog/career-tips" className="blog-card-link">
+                  <Link to="/blog" className="blog-card-link">
                     Read More →
                   </Link>
                 </div>
@@ -74,7 +74,7 @@ const BlogSection = () => {
                   <p className="blog-card-excerpt">
                     Stay ahead of the curve with our analysis of the latest job market trends and opportunities.
                   </p>
-                  <Link to="/blog/market-trends" className="blog-card-link">
+                  <Link to="/blog" className="blog-card-link">
                     Read More →
                   </Link>
                 </div>
@@ -101,7 +101,7 @@ const BlogSection = () => {
                   <p className="blog-card-excerpt">
                     Discover the must-have skills that will help you thrive in today&apos;s digital workplace.
                   </p>
-                  <Link to="/blog/digital-skills" className="blog-card-link">
+                  <Link to="/blog" className="blog-card-link">
                     Read More →
                   </Link>
                 </div>
